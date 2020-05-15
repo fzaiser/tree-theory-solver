@@ -1,0 +1,11 @@
+sort nat = zero, succ(nat)
+sort list = nil, cons(nat, list)
+
+free x:list
+
+# Demonstrates a case split on the generators of `list` for `x`.
+# Result: `x = nil` (because the other generator of `list` is excluded)
+solve !(exists y:nat,z:list. x = cons(y,z))
+
+# Note that if `list` were declared as an `open sort`, no case split would be necessary
+# because there would be infinitely many generators to choose from.

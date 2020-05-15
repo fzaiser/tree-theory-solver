@@ -1,0 +1,7 @@
+sort nat = zero, succ(nat)
+
+free x:nat
+
+# Simple example: succ(succ(succ(...))) is never finite:
+
+solve x = succ(x) & fin(x)

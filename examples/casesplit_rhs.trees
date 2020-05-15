@@ -1,0 +1,12 @@
+sort list = nil, cons(bool, list)
+sort bool = true, false
+
+free z:list, y: list
+
+# This demonstrates that a variable (`v`) can be instantiable even if it never
+# occurs on the LHS of an equation:
+# If the free variables have the values `z = cons(true, z)` and
+# `y = cons(false, y)`, then `v` can neither be `true` nor `false`!
+# So such values for the free variables have to be excluded and we have to do
+# a case split on the finitely many values of `v`.
+solve exists v: bool. !(z = cons(v, z)) & !(y = cons(v, y))

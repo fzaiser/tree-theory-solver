@@ -1,0 +1,10 @@
+sort bool = true, false
+sort nat = zero, succ(nat)
+sort inftree = tree1(inftree), tree2(inftree, inftree)
+sort d = c1(bool), c2(nat, inftree)
+
+free y:d, z:d
+
+# Note that `d` has finitely many finite inhabitants.
+# Hence a case split on the finite inhabitants of `d` is required for `x`:
+solve !(exists x: d. fin(x) & !(x = y) & !(x = z))

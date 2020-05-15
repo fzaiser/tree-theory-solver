@@ -1,0 +1,8 @@
+sort nat = zero, succ(nat)
+sort list = nil, cons(nat, list)
+
+free x:list
+
+# Here, no case split happens even though `x` is examined.
+# The reason is that `x = cons(y,x)` is recursive, so `x` is properly reachable from itself.
+solve !(exists y:nat. x = cons(y,x))

@@ -1,0 +1,9 @@
+# Simple example involving datatypes.
+
+data nat = zero | succ(pred: nat)
+data list = nil | cons(head: nat, tail: list)
+
+free l: list, n: nat
+
+# Simple example: no list can properly contain itself since it's a datatype
+solve l = cons(n, l)

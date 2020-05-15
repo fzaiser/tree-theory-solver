@@ -1,0 +1,9 @@
+sort bool = true, false
+sort nat = zero, succ(nat)
+sort t = g1(bool, bool), g2(bool, nat)
+
+free y:t, z:t
+
+# Note that `t` has infinitely many infinite inhabitants.
+# Hence a case split on the infinite inhabitants of `t` is required for `x`:
+solve !(exists x: t. !fin(x) & !(x = y) & !(x = z))

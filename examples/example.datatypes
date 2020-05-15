@@ -1,0 +1,12 @@
+data nat = zero | succ(pred: nat)
+data list = nil | cons(head: nat, tail: list)
+
+free l: list
+
+# Simple example: no list can properly contain itself since it's a datatype
+# Result: false
+solve !(l = nil) & tail(l) = l
+
+# Note that if `!(l = nil)` is removed, this is satisfiable by setting `l := nil`
+# Then `tail(l)` is unspecified because it is applied to the wrong constructor.
+# Hence it can also be equal to nil.

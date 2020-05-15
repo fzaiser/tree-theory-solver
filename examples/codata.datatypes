@@ -1,0 +1,14 @@
+# Simple example involving codatatypes.
+
+codata nat = zero | succ(pred: nat)
+codata list = nil | cons(head: nat, tail: list)
+
+free l: list, n: nat
+
+# Simple example: there is an infinite list (as a codatatype) cons(n, cons(n, ...))
+# Hence this is satisfiable.
+# Result: `l = cons(n, l)`
+solve l = cons(n, l)
+
+# Note that the input already exactly describes what the free variables have to satisfy.
+# There is no way to simplify this.

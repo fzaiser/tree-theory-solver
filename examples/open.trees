@@ -1,0 +1,8 @@
+# `open` lets one declare sorts which are assumed to infinitely many:
+# * generators
+# * finite inhabitants
+# * infinite inhabitants
+open sort T = generator1
+
+# Since `T` is declared as open, the following is true.
+solve (exists x: T. fin(x)) & (exists x: T. !fin(x))

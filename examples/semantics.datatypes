@@ -1,0 +1,16 @@
+data bool = false | true
+data either = l(left: bool), r(right: bool)
+
+# The following is satisfiable in the standard selector semantics.
+# However it is not satisfiable in the semantics with default values.
+solve !(left(r(false)) = left(r(true)))
+
+# Explanation:
+
+# In the standard semantics, the value of `left(r(X))` is unspecified.
+# It just has to be a function of `X`.
+# Hence the there is a model where the two terms are unequal.
+
+# In the semantics with default values, the value of `left(r(X))` is
+# independent of `X`, namely just the default value for `left`.
+# Hence the two terms can never be unequal.
